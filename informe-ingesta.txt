@@ -1,0 +1,18 @@
+INFORME DE VALIDACIÓN — CONSEJO MEDIANOS ANCIANOS
+Fecha: 2026-11-06
+Publicaciones: 32 (del #4975 al #5017)
+Orden descendente correcto: SÍ
+
+ERRORES (0):
+  (ninguno)
+
+AVISOS (0):
+  (ninguno)
+
+HUECOS DE NUMERACIÓN (3):
+  - 4978→4980 (faltan 1)
+  - 4985→4989 (faltan 3)
+  - 4998→5006 (faltan 7)
+
+Categorías usadas: Sociedad y Democracia, Salud e Higiene, Movilidad, Defensa, Vivienda
+Resultado: VALIDACIÓN OK

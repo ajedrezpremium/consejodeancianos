@@ -1,0 +1,5 @@
+{
+  "rewrites": [
+    { "source": "/r/:num", "destination": "/api/reflexion?num=:num" }
+  ]
+}

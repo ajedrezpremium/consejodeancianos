@@ -143,6 +143,24 @@
                     </p>
                 </div>
 
+                <!-- Reflexión del Día -->
+                <div id="reflexionDelDia" class="mt-8 max-w-3xl mx-auto bg-gradient-to-br from-amber-50 to-sky-50 dark:from-slate-800 dark:to-slate-900 border border-amber-200 dark:border-slate-700 rounded-3xl shadow-lg p-6 text-left">
+                    <div class="flex items-center gap-2 mb-2">
+                        <i class="fa-solid fa-star text-amber-500"></i>
+                        <span class="text-xs uppercase tracking-widest text-amber-700 dark:text-amber-400 font-bold">Reflexión del Día</span>
+                    </div>
+                    <h4 id="rddTitle" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white mb-2"></h4>
+                    <p id="rddExcerpt" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mb-3"></p>
+                    <div class="flex flex-wrap gap-2">
+                        <a id="rddLink" href="#" class="bg-sky-600 hover:bg-sky-700 text-white text-xs font-bold px-4 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-book-open"></i> Leer publicación
+                        </a>
+                        <button id="rddSpeak" class="bg-amber-500 hover:bg-amber-600 text-slate-950 text-xs font-bold px-4 py-2 rounded-xl shadow transition flex items-center gap-1.5">
+                            <i class="fa-solid fa-volume-high"></i> Escuchar
+                        </button>
+                    </div>
+                </div>
+
                 <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm text-slate-600 dark:text-slate-400">
                     <span class="flex items-center gap-1.5"><i class="fa-solid fa-user text-sky-600"></i> Miguel Miranda Vila</span>
                     <span class="hidden sm:inline">•</span>
@@ -951,6 +969,7 @@
         function openModal(postId) {
             const post = postsData.find(p => p.id === postId);
             if(!post) return;
+            window.currentModalPost = post;
 
             const modalContent = document.getElementById('modalContent');
             modalContent.innerHTML = `
@@ -967,13 +986,23 @@
                 <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 rounded-2xl mb-6 text-xs text-amber-900 dark:text-amber-300 font-medium italic">
                     "AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN" — Miguel Miranda Vila
                 </div>
-                <div class="flex justify-between items-center pt-4 border-t border-slate-200 dark:border-slate-800">
-                    <button onclick="speakText(document.getElementById('modalContent').innerText)" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow transition">
-                        <i class="fa-solid fa-volume-high"></i> Escuchar Lectura de Voz
-                    </button>
-                    <button onclick="closeModal()" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition">
-                        Cerrar
-                    </button>
+                <div class="flex flex-wrap justify-between items-center gap-2 pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="speakText(document.getElementById('modalContent').innerText)" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow transition">
+                            <i class="fa-solid fa-volume-high"></i> Escuchar
+                        </button>
+                        <a href="/r/${post.num}" target="_blank" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow transition">
+                            <i class="fa-solid fa-arrow-up-right-from-square"></i> Página propia
+                        </a>
+                    </div>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="shareWhatsApp((window.currentModalPost.title||'')+'%5Cn%5Cn'+(window.currentModalPost.excerpt||'')+'%5Cn%5Cnhttps://consejodeancianos.vercel.app/r/'+(window.currentModalPost.num||''))" class="bg-emerald-500 hover:bg-emerald-600 text-white px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow transition">
+                            <i class="fa-brands fa-whatsapp"></i> WhatsApp
+                        </button>
+                        <button onclick="closeModal()" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition">
+                            Cerrar
+                        </button>
+                    </div>
                 </div>
             `;
             document.getElementById('postModal').classList.remove('hidden');
@@ -1436,9 +1465,28 @@ function appendChatMessagePro(role, text) {
                 .replace(/\*(.*?)\*/g, '<em>$1</em>');
         }
 
+        function renderReflexionDelDia() {
+            if (!postsData || !postsData.length) return;
+            // semilla determinista por día del año
+            const now = new Date();
+            const start = new Date(now.getFullYear(), 0, 0);
+            const dayOfYear = Math.floor((now - start) / 86400000);
+            const idx = dayOfYear % postsData.length;
+            const p = postsData[idx];
+            const titleEl = document.getElementById('rddTitle');
+            const excEl = document.getElementById('rddExcerpt');
+            const linkEl = document.getElementById('rddLink');
+            const speakEl = document.getElementById('rddSpeak');
+            if (titleEl) titleEl.textContent = p.title;
+            if (excEl) excEl.textContent = p.excerpt || '';
+            if (linkEl) linkEl.href = '/r/' + p.num;
+            if (speakEl) speakEl.onclick = () => speakText((p.title || '') + '. ' + (p.excerpt || ''));
+        }
+
         // CARGA INICIAL
         window.onload = function() {
             renderPosts();
+            renderReflexionDelDia();
         }
     </script>
 </body>

@@ -994,7 +994,7 @@
         }
 
         // AGENTE IA - INTEGRACIÓN CON OPENROUTER (MODELOS GRATUITOS CON RESPALDO)
-        const OPENROUTER_API_KEY = ""; // NUNCA commitear la key: se inyecta en build/deploy o se usa netlify/functions/openrouter.js (env OPENROUTER_API_KEY)
+        let OPENROUTER_API_KEY = ""; // Se obtiene en runtime desde /api/config (env OPENROUTER_API_KEY en Vercel/Netlify), nunca se commitea
         const OPENROUTER_MODELS = [
             "google/gemma-4-31b-it:free",
             "nvidia/nemotron-3.5-lightning:free",
@@ -1002,10 +1002,17 @@
         ];
 
         async function callOpenRouterAPI(prompt) {
+            if (!OPENROUTER_API_KEY) {
+                try {
+                    const cfg = await fetch('/api/config').then(r => r.json());
+                    OPENROUTER_API_KEY = cfg.openrouterKey || '';
+                } catch (e) { console.warn('No se pudo obtener la key de /api/config', e); }
+            }
+            if (!OPENROUTER_API_KEY) {
+                throw new Error('OPENROUTER_API_KEY no configurada (definirla en Vercel/Netlify env)');
+            }
             const systemPrompt = `
                 Eres "El Mediano Anciano", el Agente de Inteligencia Artificial oficial de la plataforma "CONSEJO MEDIANOS ANCIANOS", representando fielmente el pensamiento de Miguel Miranda Vila (migueldavinci@hotmail.es / miguelusdavinchius).
-
-                Posees conocimiento pleno sobre las 32 publicaciones del archivo:
                 - Movilidad: Vehículos eléctricos de 'Usar y Dejar' (#4998), Coche Eléctrico desde 2012 (#4997, #4980), Microvehículos NANO/VRE de velocidad reducida (#4985), Caja Negra obligatoria (#4998), Normativa DGT (#4975), Taxis sin taxímetro con tarifa fija y vehículos sin conductor (#5007), Licencia <A> para BMR (#5009).
                 - Vivienda: La vivienda es un derecho constitucional, no un negocio especulativo (#4991, #4977).
                 - Salud e Higiene Auditiva: Subtítulos obligatorios universales en RTVE y televisión (#4983, #4982), Cuidado e higiene del oído (#4981), Evolución natural de vista/oído (#4978).

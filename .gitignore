@@ -1,0 +1,13 @@
+# Local Netlify folder
+.netlify
+
+# Dependencias
+node_modules/
+
+# Ficheros temporales de diagnóstico
+scripts/_diag*.mjs
+_posts-root-extraidos.json
+
+# Sistema
+Thumbs.db
+Desktop.ini

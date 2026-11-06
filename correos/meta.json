@@ -1,0 +1,50 @@
+{
+    "5010": {
+        "title": "#5010 MÁQUINAS - El humano ante las máquinas",
+        "excerpt": "Integridad física en el trabajo y en la calle: investigar los accidentes y regular la velocidad con dispositivos en las máquinas.",
+        "category": "Sociedad y Democracia",
+        "icon": "fa-gears"
+    },
+    "5011": {
+        "title": "#5011 MOVILIDAD - eTRAVEL: la movilidad es inmediatez",
+        "excerpt": "Mantiene su lema «movilidad no es rapidez sino inmediatez» y rememora la idea de 2024 del vehículo eTRAVEL de largo recorrido.",
+        "category": "Movilidad",
+        "icon": "fa-route"
+    },
+    "5012": {
+        "title": "#5012 SUBTÍTULOS - Hacer las cosas bien",
+        "excerpt": "Pide telediarios con subtítulos legibles sin pantallazos y propone detenerse a observar lo construido.",
+        "category": "Salud e Higiene",
+        "icon": "fa-closed-captioning"
+    },
+    "5013": {
+        "title": "#5013 ¿SIGLO XXI? - Diez preguntas sobre el respeto",
+        "excerpt": "Diez preguntas de reflexión sobre el respeto, la rebeldía, las huelgas y la gestión del siglo XXI.",
+        "category": "Sociedad y Democracia",
+        "icon": "fa-circle-question"
+    },
+    "5014": {
+        "title": "#5014 HOTMAIL - El progreso no es cambio es avance",
+        "excerpt": "Recupera su cuenta de Hotmail y reivindica que la IA y el correo electrónico sirvan al humano con estabilidad.",
+        "category": "Sociedad y Democracia",
+        "icon": "fa-envelope-open-text"
+    },
+    "5015": {
+        "title": "#5015 POLÍTICA - Del tabú a la mesa familiar",
+        "excerpt": "Memoria personal de posguerra: su padre, la medalla de San Fernando colectiva y el respeto a los que piensan diferente.",
+        "category": "Sociedad y Democracia",
+        "icon": "fa-comments"
+    },
+    "5016": {
+        "title": "#5016 IA / HOTMAIL - La última palabra la tiene el humano",
+        "excerpt": "Frente a los fallos y robos de la IA aplicada al correo, exige contar con una IA Europea de confianza.",
+        "category": "Sociedad y Democracia",
+        "icon": "fa-microchip"
+    },
+    "5017": {
+        "title": "#5017 HOTMAIL - Nuevo canal en Gmail",
+        "excerpt": "Informa de la incapacidad de abrir su cuenta Hotmail y se reafirma en la necesidad de cambiar el modo de operación del correo.",
+        "category": "Sociedad y Democracia",
+        "icon": "fa-paper-plane"
+    }
+}

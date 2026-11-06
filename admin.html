@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="robots" content="noindex, nofollow">
+    <title>Moderación - Consejo Medianos Ancianos</title>
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        body { font-family: 'Plus Jakarta Sans', system-ui, sans-serif; }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen py-10 px-4">
+    <div class="max-w-4xl mx-auto">
+        <h1 class="text-2xl font-bold text-slate-900 mb-2"><i class="fa-solid fa-shield-halved text-amber-500"></i> Panel del Consejo</h1>
+        <p class="text-sm text-slate-500 mb-6">Buzón de cartas, suscriptores y moderación del muro de propuestas.</p>
+
+        <div class="bg-white rounded-2xl shadow p-6 mb-6">
+            <label class="block text-xs font-bold uppercase text-slate-400 mb-1">Token de administración</label>
+            <input type="password" id="token" class="w-full border border-slate-300 rounded-xl px-4 py-2.5 mb-3" placeholder="ADMIN_TOKEN">
+            <div class="flex gap-2">
+                <button onclick="cargarTodo()" class="bg-sky-600 hover:bg-sky-700 text-white text-sm font-bold px-5 py-2.5 rounded-xl">
+                    <i class="fa-solid fa-inbox"></i> Cargar todo
+                </button>
+                <button onclick="listarPendientes()" class="bg-amber-500 hover:bg-amber-600 text-white text-sm font-bold px-5 py-2.5 rounded-xl">
+                    <i class="fa-solid fa-list"></i> Solo muro
+                </button>
+            </div>
+            <p id="estado" class="text-xs text-slate-500 mt-2"></p>
+        </div>
+
+        <!-- Cartas recibidas -->
+        <h2 class="text-lg font-bold text-slate-800 mt-8 mb-3"><i class="fa-solid fa-envelope text-sky-600"></i> Cartas del Buzón (contacto)</h2>
+        <div id="listaContacto" class="space-y-4"></div>
+
+        <!-- Suscriptores -->
+        <h2 class="text-lg font-bold text-slate-800 mt-8 mb-3"><i class="fa-solid fa-bell text-amber-500"></i> Suscriptores del boletín</h2>
+        <div id="listaNewsletter" class="space-y-3"></div>
+
+        <!-- Muro -->
+        <h2 class="text-lg font-bold text-slate-800 mt-8 mb-3"><i class="fa-solid fa-wall text-emerald-600"></i> Propuestas pendientes de moderación</h2>
+        <div id="lista" class="space-y-4"></div>
+    </div>
+
+    <script>
+        const base = '/.netlify/functions';
+
+        async function llamada(funcion, payload) {
+            const res = await fetch(base + '/' + funcion, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ ...payload, token: document.getElementById('token').value })
+            });
+            return { status: res.status, data: await res.json().catch(() => ({})) };
+        }
+
+        function fecha(ts) { return new Date(ts).toLocaleString('es-ES'); }
+
+        async function listarPendientes() {
+            const { status, data } = await llamada('propuestas', { action: 'listar' });
+            if (status === 403) { estado('Token incorrecto.'); return; }
+            pintarPropuestas(data.pendientes || []);
+        }
+
+        async function listarMensajes() {
+            const { status, data } = await llamada('mensajes', { action: 'listar' });
+            if (status === 403) { estado('Token incorrecto.'); return; }
+            pintarContacto(data.contacto || []);
+            pintarNewsletter(data.newsletter || []);
+        }
+
+        async function cargarTodo() {
+            estado('Cargando todo el panel...');
+            await listarMensajes();
+            await listarPendientes();
+            estado('Panel actualizado.');
+        }
+
+        function estado(txt) { document.getElementById('estado').textContent = txt; }
+
+        function pintarContacto(items) {
+            const lista = document.getElementById('listaContacto');
+            lista.innerHTML = '';
+            if (!items.length) { lista.innerHTML = '<p class="text-sm text-slate-500 bg-white rounded-2xl p-4">El buzón está vacío por ahora.</p>'; return; }
+            items.forEach(it => {
+                const div = document.createElement('div');
+                div.className = 'bg-white rounded-2xl shadow p-5';
+                div.innerHTML = `
+                    <div class="flex justify-between items-start mb-2 gap-4">
+                        <div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-sky-100 text-sky-800">${it.tema || 'Sin tema'}</span>
+                            <span class="text-xs text-slate-400 ml-2">${fecha(it.recibidoEn)}</span>
+                        </div>
+                        <button onclick="borrar('contacto','${it.id}')" title="Borrar" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-trash"></i></button>
+                    </div>
+                    <p class="text-sm text-slate-800 mb-2 whitespace-pre-line">${it.texto}</p>
+                    <p class="text-xs text-slate-500">${it.nombre} &lt;${it.email}&gt;</p>
+                `;
+                lista.appendChild(div);
+            });
+        }
+
+        function pintarNewsletter(items) {
+            const lista = document.getElementById('listaNewsletter');
+            lista.innerHTML = '';
+            if (!items.length) { lista.innerHTML = '<p class="text-sm text-slate-500 bg-white rounded-2xl p-4">Aún no hay suscriptores.</p>'; return; }
+            items.forEach(it => {
+                const div = document.createElement('div');
+                div.className = 'bg-white rounded-xl shadow p-3 flex items-center justify-between';
+                div.innerHTML = `
+                    <div class="text-sm text-slate-700"><i class="fa-solid fa-envelope-open text-slate-300 mr-2"></i>${it.email} <span class="text-xs text-slate-400 ml-2">${fecha(it.recibidoEn)}</span></div>
+                    <button onclick="borrar('newsletter','${it.id}')" title="Borrar" class="text-rose-500 hover:text-rose-700 p-1"><i class="fa-solid fa-trash"></i></button>
+                `;
+                lista.appendChild(div);
+            });
+        }
+
+        function pintarPropuestas(items) {
+            const lista = document.getElementById('lista');
+            lista.innerHTML = '';
+            if (!items.length) {
+                lista.innerHTML = '<p class="text-sm text-slate-500 bg-white rounded-2xl p-4">No hay propuestas pendientes de moderación.</p>';
+                return;
+            }
+            items.forEach(it => {
+                const div = document.createElement('div');
+                div.className = 'bg-white rounded-2xl shadow p-5';
+                div.innerHTML = `
+                    <div class="flex justify-between items-start mb-2 gap-4">
+                        <div>
+                            <span class="text-xs font-bold px-2.5 py-1 rounded-full bg-sky-100 text-sky-800">${it.categoria}</span>
+                            <span class="text-xs text-slate-400 ml-2">${fecha(it.enviadaEn)}</span>
+                        </div>
+                        <span class="text-xs text-slate-400">#${String(it.id).slice(0, 8)}</span>
+                    </div>
+                    <p class="text-sm text-slate-800 mb-2 whitespace-pre-line">${it.texto}</p>
+                    <p class="text-xs text-slate-500 mb-3">${it.nombre} &lt;${it.email}&gt;</p>
+                    <div class="flex gap-2">
+                        <button onclick="moderar('aprobar','${it.id}')" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-bold px-4 py-2 rounded-lg"><i class="fa-solid fa-check"></i> Aprobar</button>
+                        <button onclick="moderar('rechazar','${it.id}')" class="bg-rose-600 hover:bg-rose-700 text-white text-xs font-bold px-4 py-2 rounded-lg"><i class="fa-solid fa-xmark"></i> Rechazar</button>
+                    </div>
+                `;
+                lista.appendChild(div);
+            });
+        }
+
+        async function moderar(accion, id) {
+            const { status } = await llamada('propuestas', { action: accion, id });
+            if (status === 200) { listarPendientes(); estado('Propuesta ' + accion + 'a.'); }
+            else alert('Fallo del servidor (' + status + '). Revisa el token.');
+        }
+
+        async function borrar(tipo, id) {
+            const { status } = await llamada('mensajes', { action: 'borrar', tipo, id });
+            if (status === 200) listarMensajes();
+            else alert('Fallo al borrar (' + status + ').');
+        }
+    </script>
+</body>
+</html>

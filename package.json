@@ -1,0 +1,8 @@
+{
+    "name": "consejodeancianos",
+    "private": true,
+    "description": "Espacio virtual para pensar y mejorar la sociedad",
+    "dependencies": {
+        "@netlify/blobs": "^8.0.0"
+    }
+}

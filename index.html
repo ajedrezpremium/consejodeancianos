@@ -1,0 +1,1177 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CONSEJO MEDIANOS ANCIANOS - Miguel Miranda Vila</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,300;0,400;0,700;1,300&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            500: '#0284c7',
+                            700: '#0369a1',
+                            900: '#0c4a6e',
+                        },
+                        amberGold: {
+                            500: '#f59e0b',
+                            600: '#d97706',
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['Plus Jakarta Sans', 'sans-serif'],
+                        serif: ['Merriweather', 'serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        .gradient-text {
+            background: linear-gradient(135deg, #0284c7 0%, #0369a1 50%, #d97706 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .text-size-large {
+            font-size: 115% !important;
+        }
+        .text-size-xlarge {
+            font-size: 130% !important;
+        }
+        .chat-scroll::-webkit-scrollbar {
+            width: 6px;
+        }
+        .chat-scroll::-webkit-scrollbar-thumb {
+            background-color: rgba(156, 163, 175, 0.5);
+            border-radius: 3px;
+        }
+    </style>
+</head>
+<body class="bg-slate-50 dark:bg-slate-900 text-slate-800 dark:text-slate-100 transition-colors duration-200 min-h-screen flex flex-col font-sans">
+
+    <!-- Top Bar Accessibility Controls -->
+    <div class="bg-slate-900 text-slate-200 px-4 py-2 text-xs sm:text-sm flex justify-between items-center border-b border-slate-800">
+        <div class="flex items-center space-x-2">
+            <i class="fa-solid fa-hands-holding-heart text-amber-400"></i>
+            <span class="font-medium tracking-wide">Espacio de Pensamiento y Sabiduría Popular</span>
+        </div>
+        <div class="flex items-center space-x-4">
+            <div class="flex items-center space-x-1 bg-slate-800 px-2.5 py-1 rounded-lg">
+                <span class="text-xs mr-1 hidden sm:inline text-slate-300">Tamaño de letra:</span>
+                <button onclick="changeFontSize('normal')" class="px-2 py-0.5 text-xs hover:bg-slate-700 rounded font-bold transition" title="Normal">A</button>
+                <button onclick="changeFontSize('large')" class="px-2 py-0.5 text-sm hover:bg-slate-700 rounded font-bold transition" title="Grande">A+</button>
+                <button onclick="changeFontSize('xlarge')" class="px-2 py-0.5 text-base hover:bg-slate-700 rounded font-bold transition" title="Muy Grande">A++</button>
+            </div>
+            <button onclick="toggleDarkMode()" class="p-1.5 hover:text-amber-400 transition rounded-lg bg-slate-800" id="themeToggleBtn" title="Cambiar Tema">
+                <i class="fa-solid fa-moon text-sm"></i>
+            </button>
+        </div>
+    </div>
+
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-40 bg-white/95 dark:bg-slate-900/95 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <div class="flex items-center space-x-3">
+                <img src="logo.png" alt="Logo Consejo Medianos Ancianos" class="w-12 h-12 rounded-2xl shadow-md object-cover">
+
+                <div>
+                    <h1 class="text-lg sm:text-xl font-bold tracking-tight text-slate-900 dark:text-white leading-tight">
+                        CONSEJO MEDIANOS ANCIANOS
+                    </h1>
+                    <p class="text-xs text-sky-700 dark:text-sky-400 font-semibold">
+                        Por Miguel Miranda Vila
+                    </p>
+                </div>
+            </div>
+
+            <nav class="hidden md:flex items-center space-x-6 text-sm font-medium">
+                <a href="#hero" class="hover:text-sky-600 dark:hover:text-sky-400 transition">Inicio</a>
+                <a href="#valores" class="hover:text-sky-600 dark:hover:text-sky-400 transition">Valores y Misión</a>
+                <a href="#ia-agent" class="hover:text-sky-600 dark:hover:text-sky-400 transition flex items-center gap-1.5">
+                    <i class="fa-solid fa-robot text-amber-500"></i> Agente IA
+                </a>
+                <a href="#publicaciones" class="hover:text-sky-600 dark:hover:text-sky-400 transition">Reflexiones (32)</a>
+                <a href="#contacto" class="hover:text-sky-600 dark:hover:text-sky-400 transition">Contacto</a>
+            </nav>
+
+            <a href="#ia-agent" class="bg-sky-600 hover:bg-sky-700 text-white font-medium text-xs sm:text-sm px-4 py-2.5 rounded-xl shadow-sm transition flex items-center gap-2">
+                <i class="fa-solid fa-comments"></i>
+                <span>Hablar con IA</span>
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main id="app-container" class="flex-grow">
+
+        <!-- HERO SECTION -->
+        <section id="hero" class="relative py-16 lg:py-20 overflow-hidden bg-gradient-to-b from-sky-50/60 via-white to-slate-50 dark:from-slate-950 dark:via-slate-900 dark:to-slate-900">
+            <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-amber-500/10 text-amber-700 dark:text-amber-400 font-semibold text-xs sm:text-sm mb-6 border border-amber-500/20">
+                    <i class="fa-solid fa-quote-left"></i> PENSAMIENTO SOCIAL Y SABIDURÍA POPULAR
+                </div>
+                
+                <h2 class="text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight mb-6">
+                    CONSEJO MEDIANOS ANCIANOS
+                </h2>
+
+                <p class="text-lg sm:text-2xl font-serif italic text-sky-800 dark:text-sky-300 max-w-4xl mx-auto mb-6 leading-relaxed">
+                    "Reflexiones sobre Movilidad, Vivienda Digna, Accesibilidad Auditiva, Pensiones, Paz y Sociedad"
+                </p>
+
+                <!-- Lema Banner -->
+                <div id="valores" class="my-8 p-6 bg-white dark:bg-slate-800 rounded-3xl shadow-xl border border-sky-100 dark:border-slate-700 max-w-3xl mx-auto transform hover:-translate-y-1 transition duration-300">
+                    <p class="text-xs uppercase tracking-widest text-slate-400 font-bold mb-2">Valores Fundamentales del Mediano Anciano</p>
+                    <p class="text-2xl sm:text-4xl font-black tracking-wide text-amber-600 dark:text-amber-400">
+                        AMAR • ALEGRÍA • PAZ • BIEN • PERDÓN
+                    </p>
+                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-3 italic">
+                        "Principios para construir una comunidad justa, solidaria y respetuosa con todas las generaciones."
+                    </p>
+                </div>
+
+                <div class="mt-8 flex flex-wrap justify-center gap-4 text-sm text-slate-600 dark:text-slate-400">
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-user text-sky-600"></i> Miguel Miranda Vila</span>
+                    <span class="hidden sm:inline">•</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-at text-sky-600"></i> migueldavinci@hotmail.es</span>
+                    <span class="hidden sm:inline">•</span>
+                    <span class="flex items-center gap-1.5"><i class="fa-solid fa-id-badge text-sky-600"></i> miguelusdavinchius</span>
+                </div>
+            </div>
+        </section>
+
+        <!-- AGENTE IA CONSEJO SECTION -->
+        <section id="ia-agent" class="py-12 bg-slate-100 dark:bg-slate-800/60 border-y border-slate-200 dark:border-slate-800">
+            <div class="max-w-5xl mx-auto px-4 sm:px-6">
+                <div class="text-center mb-8">
+                    <span class="bg-sky-100 dark:bg-sky-900/60 text-sky-800 dark:text-sky-300 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider">
+                        Asistente Virtual con Inteligencia Artificial
+                    </span>
+                    <h3 class="text-2xl sm:text-3xl font-bold mt-2 text-slate-900 dark:text-white">
+                        Agente IA "El Mediano Anciano"
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base max-w-2xl mx-auto mt-1">
+                        Un consejero sabio y humanista. Pregúntale sobre las 32 reflexiones del archivo (Vivienda, Movilidad, Subtítulos, Geopolítica, Pensiones, Economía o Ceuta/Melilla).
+                    </p>
+                </div>
+
+                <!-- Chat Box Container -->
+                <div class="bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-700 flex flex-col h-[540px] overflow-hidden">
+                    
+                    <!-- Chat Header -->
+                    <div class="p-4 bg-sky-700 text-white flex items-center justify-between">
+                        <div class="flex items-center space-x-3">
+                            <div class="w-10 h-10 rounded-2xl bg-amber-500 text-white flex items-center justify-center font-bold text-lg shadow">
+                                <i class="fa-solid fa-brain"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-sm sm:text-base leading-none">El Mediano Anciano (IA)</h4>
+                                <p class="text-xs text-sky-200 mt-1 flex items-center gap-1">
+                                    <span class="w-2 h-2 rounded-full bg-emerald-400 inline-block animate-pulse"></span>
+                                    Inspirado en las ideas de Miguel Miranda Vila
+                                </p>
+                            </div>
+                        </div>
+                        <button onclick="resetChat()" class="text-sky-200 hover:text-white text-xs flex items-center gap-1.5 bg-sky-800/80 px-3 py-1.5 rounded-xl transition" title="Reiniciar Chat">
+                            <i class="fa-solid fa-rotate-right"></i>
+                            <span class="hidden sm:inline">Reiniciar Chat</span>
+                        </button>
+                    </div>
+
+                    <!-- Chat Messages Area -->
+                    <div id="chatMessages" class="flex-grow p-4 overflow-y-auto space-y-4 chat-scroll bg-slate-50 dark:bg-slate-950/40">
+                        <!-- Welcome Message -->
+                        <div class="flex items-start gap-3">
+                            <div class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs flex-shrink-0">
+                                <i class="fa-solid fa-robot"></i>
+                            </div>
+                            <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-tl-none p-4 max-w-[85%] shadow-sm text-sm">
+                                <p class="font-semibold text-sky-700 dark:text-sky-400 mb-1">El Mediano Anciano:</p>
+                                <p class="leading-relaxed">¡Paz y bienvenido! Soy el Agente IA del **Consejo Medianos Ancianos**.</p>
+                                <p class="mt-2 leading-relaxed">Tengo a tu disposición las 32 reflexiones escritas por Miguel Miranda Vila: desde la vivienda constitucional y los vehículos de usar y dejar, hasta el tratamiento de la salud auditiva, la geopolítica de Ucrania o la vocación.</p>
+                                <p class="mt-3 text-xs text-amber-600 dark:text-amber-400 italic font-semibold">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN"</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Quick Prompts Buttons -->
+                    <div class="p-2.5 bg-slate-100 dark:bg-slate-800/80 border-t border-slate-200 dark:border-slate-800 overflow-x-auto flex gap-2 text-xs">
+                        <span class="text-slate-500 dark:text-slate-400 self-center font-medium px-2 whitespace-nowrap">Temas:</span>
+                        <button onclick="sendQuickPrompt('¿Por qué defender que la vivienda es un derecho y no un comercio?')" class="bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 hover:bg-sky-50 dark:hover:bg-slate-600 rounded-lg px-3 py-1.5 whitespace-nowrap transition">🏠 Vivienda como Derecho</button>
+                        <button onclick="sendQuickPrompt('¿En qué consisten los coches de usar y dejar con caja negra?')" class="bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 hover:bg-sky-50 dark:hover:bg-slate-600 rounded-lg px-3 py-1.5 whitespace-nowrap transition">🚗 Coche Eléctrico y Caja Negra</button>
+                        <button onclick="sendQuickPrompt('¿Qué propones para la salud e higiene auditiva y subtítulos?')" class="bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 hover:bg-sky-50 dark:hover:bg-slate-600 rounded-lg px-3 py-1.5 whitespace-nowrap transition">👂 Subtítulos y Salud Auditiva</button>
+                        <button onclick="sendQuickPrompt('¿Cuál es tu reflexión sobre el Ministerio de Defensa frente al de Guerra?')" class="bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 hover:bg-sky-50 dark:hover:bg-slate-600 rounded-lg px-3 py-1.5 whitespace-nowrap transition">🛡️ Ministerio de Defensa vs Guerra</button>
+                        <button onclick="sendQuickPrompt('¿Por qué las pensiones son un derecho e historia de trabajo?')" class="bg-white dark:bg-slate-700 border border-slate-300 dark:border-slate-600 hover:bg-sky-50 dark:hover:bg-slate-600 rounded-lg px-3 py-1.5 whitespace-nowrap transition">👵 Pensiones Públicas</button>
+                    </div>
+
+                    <!-- Input Bar -->
+                    <form id="chatForm" onsubmit="handleChatSubmit(event)" class="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 flex items-center gap-2">
+                        <input type="text" id="userInput" placeholder="Escribe tu consulta sobre el Consejo Medianos Ancianos..." class="flex-grow bg-slate-100 dark:bg-slate-800 border border-slate-300 dark:border-slate-700 text-slate-800 dark:text-white rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-sky-500" required />
+                        <button type="submit" id="sendBtn" class="bg-sky-600 hover:bg-sky-700 text-white font-medium px-5 py-2.5 rounded-xl shadow transition flex items-center gap-2">
+                            <span>Consultar</span>
+                            <i class="fa-solid fa-paper-plane text-xs"></i>
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+        <!-- BUSCADOR Y CATALOGO DE PUBLICACIONES -->
+        <section id="publicaciones" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+                <div>
+                    <div class="inline-flex items-center gap-2 text-xs font-bold text-sky-600 dark:text-sky-400 uppercase tracking-wider mb-1">
+                        <i class="fa-solid fa-box-archive"></i> Archivo Completo (24 Artículos)
+                    </div>
+                    <h3 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">
+                        Publicaciones y Cartas del Consejo
+                    </h3>
+                    <p class="text-slate-600 dark:text-slate-400 text-sm mt-1">
+                        Recopilación completa de mensajes enviados por Miguel Miranda Vila / Migueldavinci.
+                    </p>
+                </div>
+
+                <!-- Buscador -->
+                <div class="w-full md:w-80 relative">
+                    <i class="fa-solid fa-magnifying-glass absolute left-3.5 top-3 text-slate-400"></i>
+                    <input type="text" id="searchInput" oninput="filterPosts()" placeholder="Buscar por tema o título..." class="w-full pl-10 pr-4 py-2.5 bg-white dark:bg-slate-800 border border-slate-300 dark:border-slate-700 rounded-xl text-sm focus:outline-none focus:ring-2 focus:ring-sky-500 shadow-sm" />
+                </div>
+            </div>
+
+            <!-- Filtro por Categorías -->
+            <div class="flex flex-wrap gap-2 mb-8" id="categoryFilters">
+                <button onclick="setCategoryFilter('all')" class="cat-filter active-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-sky-600 text-white">Todas (24)</button>
+                <button onclick="setCategoryFilter('Movilidad')" class="cat-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">🚗 Movilidad</button>
+                <button onclick="setCategoryFilter('Vivienda')" class="cat-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">🏠 Vivienda</button>
+                <button onclick="setCategoryFilter('Salud e Higiene')" class="cat-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">👂 Salud y Accesibilidad</button>
+                <button onclick="setCategoryFilter('Sociedad y Democracia')" class="cat-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">🏛️ Sociedad y Democracia</button>
+                <button onclick="setCategoryFilter('Defensa')" class="cat-filter px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition bg-slate-200 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-300">🛡️ Defensa y Geopolítica</button>
+            </div>
+
+            <!-- Posts Grid -->
+            <div id="postsGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                <!-- Carga dinámica mediante JavaScript -->
+            </div>
+        </section>
+
+        <!-- SECCIÓN ENVIAR IDEAS / CONTACTO -->
+        <section id="contacto" class="py-16 bg-gradient-to-br from-slate-900 via-sky-950 to-slate-900 text-white">
+            <div class="max-w-4xl mx-auto px-4 sm:px-6">
+                <div class="bg-slate-800/80 border border-slate-700 rounded-3xl p-6 sm:p-10 shadow-2xl backdrop-blur-sm">
+                    <div class="text-center mb-8">
+                        <i class="fa-solid fa-paper-plane text-amber-400 text-3xl mb-3"></i>
+                        <h3 class="text-2xl sm:text-3xl font-bold">Enviar Propuesta al Consejo</h3>
+                        <p class="text-slate-300 text-sm mt-2 max-w-xl mx-auto">
+                            Escribe directamente a **Miguel Miranda Vila / Migueldavinci Leonardo** para aportar ideas sobre convivencia, salud auditiva o movilidad pública.
+                        </p>
+                    </div>
+
+                    <form onsubmit="handleContactSubmit(event)" class="space-y-4">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Tu Nombre</label>
+                                <input type="text" id="contactName" required placeholder="Nombre completo" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Correo Electrónico</label>
+                                <input type="email" id="contactEmail" required placeholder="tu@correo.com" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+                            </div>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Tema / Categoría de la Carta</label>
+                            <select id="contactSubject" class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500">
+                                <option value="Movilidad y Vehículos de Usar y Dejar">Movilidad y Vehículos de Usar y Dejar</option>
+                                <option value="Derecho a la Vivienda Constitucional">Derecho a la Vivienda Constitucional</option>
+                                <option value="Salud e Higiene Auditiva y Subtítulos">Salud e Higiene Auditiva y Subtítulos</option>
+                                <option value="Pensiones Públicas y Dignidad Senior">Pensiones Públicas y Dignidad Senior</option>
+                                <option value="Defensa y Reflexión Geopolítica">Defensa y Reflexión Geopolítica</option>
+                                <option value="Valores Sociales y Democracia">Valores Sociales y Democracia</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label class="block text-xs font-semibold uppercase text-slate-400 mb-1">Mensaje o Reflexión</label>
+                            <textarea id="contactMessage" rows="5" required placeholder="Escribe aquí tu mensaje para Miguel Miranda Vila..." class="w-full bg-slate-900 border border-slate-700 rounded-xl px-4 py-3 text-sm text-white focus:outline-none focus:ring-2 focus:ring-sky-500"></textarea>
+                        </div>
+
+                        <div class="flex items-center justify-between pt-2">
+                            <span class="text-xs text-slate-400">Destinatario: <strong class="text-amber-400">migueldavinci@hotmail.es</strong></span>
+                            <button type="submit" class="bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold px-6 py-3 rounded-xl transition shadow-lg flex items-center gap-2">
+                                <span>Enviar por Email</span>
+                                <i class="fa-solid fa-envelope"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Modal para lectura completa de la publicación -->
+    <div id="postModal" class="fixed inset-0 bg-slate-950/80 backdrop-blur-sm z-50 hidden flex items-center justify-center p-4">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 w-full max-w-2xl rounded-3xl p-6 sm:p-8 shadow-2xl relative max-h-[90vh] overflow-y-auto">
+            <button onclick="closeModal()" class="absolute top-4 right-4 text-slate-400 hover:text-slate-600 dark:hover:text-white text-xl p-2" title="Cerrar">
+                <i class="fa-solid fa-xmark"></i>
+            </button>
+            <div id="modalContent">
+                <!-- Contenido dinámico -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-slate-950 text-slate-400 py-10 border-t border-slate-800 text-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-4">
+            <p class="font-bold text-white text-base">CONSEJO MEDIANOS ANCIANOS</p>
+            <p class="italic text-amber-400 font-serif">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN"</p>
+            <p class="text-xs text-slate-500">
+                Archivo interactivo creado para la preservación y divulgación pública de las obras de Miguel Miranda Vila (migueldavinci@hotmail.es).
+            </p>
+            <p class="text-xs text-slate-600">
+                &copy; 2026 Consejo Medianos Ancianos. Plataforma Abierta y Gratuita.
+            </p>
+        </div>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC CON LAS 32 PUBLICACIONES COMPLETAS -->
+    <script>
+        // ARCHIVO COMPLETO DE PUBLICACIONES RECIBIDAS DE MIGUEL MIRANDA VILA
+        const postsData = [            {
+                id: "5017",
+                num: 5017,
+                date: "06/11/2026",
+                category: "Sociedad y Democracia",
+                title: "#5017 HOTMAIL - Nuevo canal en Gmail",
+                excerpt: "Informa de la incapacidad de abrir su cuenta Hotmail y se reafirma en la necesidad de cambiar el modo de operación del correo.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5017 (6 de Noviembre de 2026)</strong></p>
+                    <p class="mb-3">Lamenta, el mediano anciano, informar, de la incapacidad total, de abrir la cuenta migueldavinci@hotmail.es</p>
+                    <p class="mb-3">Pide disculpas, el mediano anciano, si ha ocasionado algún mal entendido</p>
+                    <p class="mb-3">Se reafirma, el mediano anciano, en la necesidad de cambiar el modo de operación de los correos electrónicos</p>
+                    <p class="mb-3">Espera, el mediano anciano, que no pase lo de los &lt;subtítulos&gt;, ... ¡la paciencia tiene un límite!</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-paper-plane"
+            },
+            {
+                id: "5016",
+                num: 5016,
+                date: "05/11/2026",
+                category: "Sociedad y Democracia",
+                title: "#5016 IA / HOTMAIL - La última palabra la tiene el humano",
+                excerpt: "Frente a los fallos y robos de la IA aplicada al correo, exige contar con una IA Europea de confianza.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5016 (5 de Noviembre de 2026)</strong></p>
+                    <p class="mb-3">Piensa, el mediano anciano, evidentemente, la IA ha tomado el mando del correo electrónico HOTMAIL, su desaparición es eminente</p>
+                    <p class="mb-3">Considera, el mediano anciano, su preocupación por preguntar si eres el humano, así lo evidencia</p>
+                    <p class="mb-3">Entiende, el mediano anciano, la creencia que la máquina puede hacer las cosas mejor que el humano nos ha puesto en el disparadero. Así: Fallos entre ordenadores, robo de información, delitos de apropiación, correcciones inoportunas, imposición de códigos, corregir errores humanos, dar la última orden...</p>
+                    <p class="mb-3">Cree, el mediano anciano, los problemas están por venir. Tenemos que contar con IA EUROPEA</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-microchip"
+            },
+            {
+                id: "5015",
+                num: 5015,
+                date: "04/11/2026",
+                category: "Sociedad y Democracia",
+                title: "#5015 POLÍTICA - Del tabú a la mesa familiar",
+                excerpt: "Memoria personal de posguerra: su padre, la medalla de San Fernando colectiva y el respeto a los que piensan diferente.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5015 (4 de Noviembre de 2026)</strong></p>
+                    <p class="mb-3">Reflexiona, el mediano anciano, la política era material "tabú" en las casas de la mayoría de los españoles</p>
+                    <p class="mb-3">Piensa, el mediano anciano, la guerra civil tuvo mucha culpa, mis padres nunca hablaban de política, durante la comida o la vida en familia, preferían jugar al &lt;julepe&gt;, juego de cartas</p>
+                    <p class="mb-3">A mencionado, el mediano anciano, a mi padre le fue concedida la medalla de San Fernando Colectiva, y siempre nos inculcó un respeto por los que piensan diferente</p>
+                    <p class="mb-3">Comentaba, mi padre, que su pistola, de falangista, estaba en manos de todo Guixar, cuando jugaba al dominó en la taberna. Tuvo necesidad de enrolarse, en el ejército, para escapar de un fuerte castigo, por ir a conquistar a mi madre en Chapela, al faltar a una guardia en la Central Falangista de la calle Alfonso XIII, ... ¡No era cosa de broma!. En el aserradero de maderas de mi abuelo, estuvo escondido en el pozo, un familiar</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-comments"
+            },
+            {
+                id: "5014",
+                num: 5014,
+                date: "03/11/2026",
+                category: "Sociedad y Democracia",
+                title: "#5014 HOTMAIL - El progreso no es cambio es avance",
+                excerpt: "Recupera su cuenta de Hotmail y reivindica que la IA y el correo electrónico sirvan al humano con estabilidad.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5014 (3 de Noviembre de 2026)</strong></p>
+                    <p class="mb-3">Proclama, el mediano anciano, ... ¡He recuperado, milagrosamente, migueldavinci@hotmail.es!</p>
+                    <p class="mb-3">Lamenta, el mediano anciano, su indefensión ante IA</p>
+                    <p class="mb-3">Mantiene, el mediano anciano, IA es una máquina al servicio del humano</p>
+                    <p class="mb-3">Entiende, el mediano anciano, el humano debe tener la última palabra</p>
+                    <p class="mb-3">Constata, el mediano anciano, el correo electrónico, tiene un afán de cambio constante, que no concuerda con su decisión de continuar con lo conocido</p>
+                    <p class="mb-3">Cree, el mediano anciano, ... ¡el progreso no es cambio es avance!</p>
+                    <p class="mb-3">Piensa, el mediano anciano, el correo electrónico debe ser comparable al correo estatal, ... sí hay que fijar precio, ... ¡se paga!</p>
+                    <p class="mb-3">Entiende, el mediano anciano, la información también es un pago</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-envelope-open-text"
+            },
+            {
+                id: "5013",
+                num: 5013,
+                date: "02/11/2026",
+                category: "Sociedad y Democracia",
+                title: "#5013 ¿SIGLO XXI? - Diez preguntas sobre el respeto",
+                excerpt: "Diez preguntas de reflexión sobre el respeto, la rebeldía, las huelgas y la gestión del siglo XXI.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5013 (2 de Noviembre de 2026)</strong></p>
+                    <p class="mb-3">¿Es el respeto un componente aceptado en el siglo XXI?</p>
+                    <p class="mb-3">¿Son las catástrofes producto de la &lt;generación perdida&gt;?</p>
+                    <p class="mb-3">¿Son los cambios climáticos culpa del Gobierno?</p>
+                    <p class="mb-3">¿Pueden las algaradas aportar algo positivo?</p>
+                    <p class="mb-3">¿Son las huelgas constructivas?</p>
+                    <p class="mb-3">¿Es la rebeldía componente juvenil?</p>
+                    <p class="mb-3">¿Es necesario respetar a los mayores?</p>
+                    <p class="mb-3">¿Inculca la enseñanza amor y respeto?</p>
+                    <p class="mb-3">¿Es necesario pisar al contrincante?</p>
+                    <p class="mb-3">¿Permiten los votos, mentir y calumniar?</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-circle-question"
+            },
+            {
+                id: "5012",
+                num: 5012,
+                date: "01/11/2026",
+                category: "Salud e Higiene",
+                title: "#5012 SUBTÍTULOS - Hacer las cosas bien",
+                excerpt: "Pide telediarios con subtítulos legibles sin pantallazos y propone detenerse a observar lo construido.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5012 (1 de Noviembre de 2026)</strong></p>
+                    <p class="mb-3">Reflexiona, el mediano anciano, ¿por qué no somos capaces de hacer las cosas bien?</p>
+                    <p class="mb-3">Entiende, el mediano anciano, la culpa proviene de la educación, ... ¡&lt;el tiempo es oro&gt;!</p>
+                    <p class="mb-3">Conoce, el mediano anciano, la velocidad del tiempo y de los tiempos, ... ¡ya estamos en Navidad!</p>
+                    <p class="mb-3">Propone, el mediano anciano, detenerse y observar lo construido</p>
+                    <p class="mb-3">Recuerda, el mediano anciano, su lucha por &lt;los subtítulos&gt;. Pepa Bueno parece haber leído su pensamiento. Sin embargo, si &lt;los subtítulos&gt;, en los telediarios, careciesen de pantallazos, se podrían leer con delicadeza. El formato de cuatro reglones que desplacen al superior ayudará</p>
+                    <p class="mb-3">En el día del Señor: Gloria a la comunión de Santos, Mártires y Fieles Difuntos</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-closed-captioning"
+            },
+            {
+                id: "5011",
+                num: 5011,
+                date: "31/10/2026",
+                category: "Movilidad",
+                title: "#5011 MOVILIDAD - eTRAVEL: la movilidad es inmediatez",
+                excerpt: "Mantiene su lema «movilidad no es rapidez sino inmediatez» y rememora la idea de 2024 del vehículo eTRAVEL de largo recorrido.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5011 (31 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Observa, el mediano anciano, la evolución de la movilidad y mantiene su lema &lt;movilidad no es rapidez sino inmediatez&gt;</p>
+                    <p class="mb-3">"IDEA: 28/09/2024 -//- PUBLICACIÓN Nº: 4258 -//- eTRAVEL -//- Recuerda, el pequeño anciano, publicar un vehículo para largos viajes, con asientos movibles mientras se viaja y techo alto para circular. Idea, el pequeño anciano, motores en las ruedas delanteras de baja velocidad y motores en las ruedas traseras de alta velocidad. Así, cuando arranca son los motores delanteros los que tiran del coche y a régimen, en autopistas, son los motores traseros de alta velocidad los que lo mueve, mientras las ruedas delanteras, al girar, producen corriente eléctrica para cargar baterías..."</p>
+                    <p class="mb-3">Espera, el mediano anciano, poder contar haberlo conseguido</p>
+                    <p class="mb-3">Cree, el mediano anciano, los subtítulos, poco a poco, van tomando forma</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-route"
+            },
+            {
+                id: "5010",
+                num: 5010,
+                date: "30/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#5010 MÁQUINAS - El humano ante las máquinas",
+                excerpt: "Integridad física en el trabajo y en la calle: investigar los accidentes y regular la velocidad con dispositivos en las máquinas.",
+                content: `                    <p class="mb-3"><strong>Publicación Nº 5010 (30 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Evidentemente, el mediano anciano, en su vida laboral, ha tenido que poner su integridad física, en manos de las máquinas</p>
+                    <p class="mb-3">Cree, el mediano anciano, la &lt;generación perdida&gt;, ve a las máquinas como un enemigo y no como un instrumento que debe saber manejar</p>
+                    <p class="mb-3">Considera, el mediano anciano, el accidente hay que investigarlo y conocer la causa</p>
+                    <p class="mb-3">Mantiene, el mediano anciano, &lt;el gobierno paralelo judicial&gt;, debe tener ... ¡SENTIDIÑO!</p>
+                    <p class="mb-3">Conoce, el mediano anciano, la falta de interés, por parte de los Gobiernos europeos, de solucionar los accidentes de movilidad, regulando y haciendo cumplir la velocidad, mediante dispositivos en las máquinas</p>
+                    <p class="mb-3">Pd: ¡hotmail no lo envía, uso gmail!</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-gears"
+            },
+            {
+                id: "5009",
+                num: 5009,
+                date: "29/10/2026",
+                category: "Movilidad",
+                title: "#5009 PENSAMIENTO - Licencia <A> para movilidad reducida",
+                excerpt: "Propuesta de distinción con letra <A> solo para vehículos de movilidad reducida (BMR), con limitaciones adecuadas a la normativa actual.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 5009 (29 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Mantiene, el mediano anciano, parte de lo ya publicado. Se rememora la idea de <strong>15/09/2024 - Publicación Nº 3235</strong> sobre la \"letra A\" para conductores con dilatada experiencia que quisieran circular con ciertas restricciones.</p>
+                    <p class="mb-3">Considera, el mediano anciano, que la letra <strong>&lt;A&gt;</strong> solo pueda utilizarse en los vehículos de movilidad reducida (<strong>BMR</strong>) y lo mismo para la letra <strong>&lt;L&gt;</strong>. No se puede usar en las autopistas, ... ¡estamos en el siglo XXI!</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-id-card"
+            },
+            {
+                id: "5008",
+                num: 5008,
+                date: "28/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#5008 COMENTARIO - Economía y contradicciones políticas",
+                excerpt: "Reflexión sobre la distinción entre afirmaciones falsas, engañosas, mentiras y desinformación, y la importancia del contraste de fuentes.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 5008 (28 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Constata, el mediano anciano, la economía ha desaparecido en el Congreso. Según comenta <em>jacobustrotamundis</em>, hay que distinguir entre demostrar que una afirmación es falsa y demostrar que alguien mintió deliberadamente. Un político puede cambiar de opinión legítimamente cuando cambian las circunstancias.</p>
+                    <p class="mb-3">Mantiene, el mediano anciano, la lengua española diferencia: falso, engañoso, mentira, manipulación, mala intención, equivocación, desinformación, mala explicación, desconocimiento...</p>
+                    <p class="mb-3">Espera, el mediano anciano, una reflexión constructiva.</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-scale-balanced"
+            },
+            {
+                id: "5007",
+                num: 5007,
+                date: "27/10/2026",
+                category: "Movilidad",
+                title: "#5007 MEMORIA - Movilidad como derecho, no como negocio",
+                excerpt: "Retoma la idea de taxis sin taxímetro con tarifa fija y servicio tipo línea, adaptada a la movilidad del siglo XXI sin conductor.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 5007 (27 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Sigue manteniendo, el mediano anciano, la movilidad nos hace más ciudadanos.</p>
+                    <p class="mb-3">Se rememora la <strong>Idea: 10/09/2024 - Publicación Nº 4230</strong>: reclamando nuevos taxis sin taxímetro, cuatro por cada zona de parada, con tarifa fija de seis euros, en calles marcadas, sin desvío. Líneas tipo autobús con posibilidad de subir/bajar donde se desee, máximo tres pasajeros.</p>
+                    <p class="mb-3">Explica, el mediano anciano, la idea publicada es mantener siempre la parada de salida con algún taxi; el número de cuatro es ajustable. En trayectos de largo recorrido serán dos las paradas de salida (ida y vuelta).</p>
+                    <p class="mb-3">Mantiene, el mediano anciano, el vehículo del siglo XXI, será sin conductor y con más asientos.</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-taxi"
+            },
+            {
+                id: "5006",
+                num: 5006,
+                date: "26/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#5006 EVOLUCIÓN - Política como medio de cohesión",
+                excerpt: "Reflexión sobre la función de la política para la convivencia y el bien común.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 5006 (26 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Es opinión del mediano anciano, la política es el medio de cohesión social para alcanzar el bien común.</p>
+                    <p class="mb-3 italic">"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN."</p>
+                `,
+                icon: "fa-landmark"
+            },
+            {
+                id: "4998",
+                num: 4998,
+                date: "18/10/2026",
+                category: "Movilidad",
+                title: "#4998 MOVILIDAD - Vehículos eléctricos de 'Usar y Dejar' y Caja Negra",
+                excerpt: "Rediseño de la movilidad urbana mediante vehículos eléctricos ligeros comunitarios de usar y dejar, equipados con caja negra de seguridad.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4998 (18 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">La movilidad moderna no consiste en acumular vehículos privados pesados que saturan las ciudades y generan gastos inasumibles para los ciudadanos de medianos ingresos y ancianos.</p>
+                    <p class="mb-3"><strong>Propuesta clave:</strong> Implantar sistemas de vehículos eléctricos ligeros urbanos bajo la modalidad de <em>"Usar y Dejar"</em>. Tomas el vehículo en puntos estratégicos y lo dejas en tu destino sin cargas de mantenimiento o parking.</p>
+                    <p class="mb-3">Asimismo, apoyamos la incorporación obligatoria de la <strong>Caja Negra</strong> en todos los automóviles para esclarecer responsabilidades en accidentes de forma objetiva, garantizando la máxima seguridad vial para el peatón y el conductor.</p>
+                `,
+                icon: "fa-car-side"
+            },
+            {
+                id: "4997",
+                num: 4997,
+                date: "17/10/2026",
+                category: "Movilidad",
+                title: "#4997 MOVILIDAD - Lucha por el coche eléctrico desde 2012",
+                excerpt: "Una mirada retrospectiva a más de una década impulsando la electrificación accesible, popular y eficiente en el transporte.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4997 (17 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Desde el año 2012 hemos mantenido una defensa incansable sobre la necesidad de democratizar el coche eléctrico. La transición ecológica no puede ser un capricho reservado a las clases adineradas.</p>
+                    <p class="mb-3">Es necesario apoyar soluciones de transporte eléctrico liviano, promoviendo la industria de proximidad y asegurando que las personas mayores dispongan de alternativas de transporte limpias, autónomas y económicas.</p>
+                `,
+                icon: "fa-charging-station"
+            },
+            {
+                id: "4996",
+                num: 4996,
+                date: "16/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#4996 ANTIDISTURBIOS - Memoria y oposición al modelo tradicional",
+                excerpt: "El orden público debe cimentarse en la prevención, el respeto a los derechos ciudadanos y la solución pacífica de conflictos.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4996 (16 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">El papel de las fuerzas de seguridad e intervenciones antidisturbios requiere una profunda reflexión humanista. La convivencia democrática se protege mediante la justicia social y el diálogo, no mediante el choque represivo.</p>
+                    <p class="mb-3">Aspiramos a un modelo donde la policía sea concebida como una fuerza protectora y preventiva que actúe como amparo para la ciudadanía indefensa y los mayores.</p>
+                `,
+                icon: "fa-shield-halved"
+            },
+            {
+                id: "4995",
+                num: 4995,
+                date: "15/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#4995 PENSIÓN - ¿Derecho u negocio? Cumplimiento de la pensión pública",
+                excerpt: "Las pensiones públicas son el fruto sagrado de toda una vida de trabajo y deben blindarse frente a especulaciones o recortes.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4995 (15 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Las pensiones no son una dádiva ni un producto financiero con el que mercadear. Son la compensación legítima e inalienable a décadas de contribución laboral y social.</p>
+                    <p class="mb-3">El Estado tiene la obligación constitucional y moral de garantizar pensiones suficientes que permitan a las personas de medana y avanzada edad vivir con absoluta dignidad y estabilidad económica.</p>
+                `,
+                icon: "fa-hand-holding-dollar"
+            },
+            {
+                id: "4994",
+                num: 4994,
+                date: "14/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#4994 VOCACIÓN - El sacrificio como requisito fundamental",
+                excerpt: "Ninguna gran obra social o progreso humano florece sin la dedicación sincera, el esfuerzo y la vocación de servicio.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4994 (14 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Frente a la cultura de la inmediatez y el beneficio rápido, reivindicamos el valor de la vocación. Ser maestro, profesional de la salud, artesano o servidor público implica un compromiso noble de entrega a los demás.</p>
+                    <p class="mb-3">El sacrificio con sentido enriquece al ser humano y constituye el cimiento firme de toda sociedad avanzada y compasiva.</p>
+                `,
+                icon: "fa-heart-pulse"
+            },
+            {
+                id: "4993",
+                num: 4993,
+                date: "13/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#4993 EL VOTO - La sal de la democracia",
+                excerpt: "El voto consciente y responsable es la herramienta fundamental para transformar la realidad y exigir justicia social.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4993 (13 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">El voto es la sal que da sabor y vida a la democracia. No debemos sucumbir a la apatía o al desencanto político.</p>
+                    <p class="mb-3">Cada sufragio representa la voz del ciudadano para defender el derecho a la vivienda, pensiones dignas, sanidad universal y un futuro armónico para las nuevas generaciones.</p>
+                `,
+                icon: "fa-check-to-slot"
+            },
+            {
+                id: "4992",
+                num: 4992,
+                date: "12/10/2026",
+                category: "Defensa",
+                title: "#4992 DEFENSA - Desfiles militares en Madrid y Vigo",
+                excerpt: "Reflexión sobre los actos del Día de la Fiesta Nacional y la presencia de las Fuerzas Armadas en las ciudades.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4992 (12 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">A propósito de las conmemoraciones y desfiles militares en ciudades como Madrid y Vigo, es ocasión para recordar que la verdadera misión institucional de la defensa debe ser el resguardo de la paz y el auxilio civil en situaciones de emergencia.</p>
+                    <p class="mb-3">El acercamiento entre el estamento militar y la sociedad civil debe servir para reforzar la concordia y el valor del servicio público.</p>
+                `,
+                icon: "fa-flag"
+            },
+            {
+                id: "4991",
+                num: 4991,
+                date: "11/10/2026",
+                category: "Vivienda",
+                title: "#4991 VIVIENDA - La vivienda es un derecho, no un comercio",
+                excerpt: "El hogar es una necesidad humana elemental que el Estado debe proteger frente a la especulación inmobiliaria desmedida.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4991 (11 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Tratar la vivienda como un mero activo financiero de alquiler y compraventa especulativa asfixia a los jóvenes y deja desamparados a los ancianos.</p>
+                    <p class="mb-3">Exigimos políticas públicas valientes que garanticen viviendas sociales, alquileres sostenibles y facilidades de acondicionamiento para que cada persona posea un hogar seguro y confortable donde envejecer con paz.</p>
+                `,
+                icon: "fa-house-chimney"
+            },
+            {
+                id: "4990",
+                num: 4990,
+                date: "10/10/2026",
+                category: "Defensa",
+                title: "#4990 UCRANIA - Hipótesis sobre la guerra y el papel geopolítico",
+                excerpt: "Análisis humanista sobre los conflictos bélicos globales y la urgencia de acuerdos diplomáticos de paz duraderos.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4990 (10 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">El prolongado conflicto en Ucrania evidencia la tragedia de los enfrentamientos armados entre naciones. Las víctimas principales siempre son las familias trabajadoras y los ancianos.</p>
+                    <p class="mb-3">Aspiramos a que la diplomacia internacional y la neutralidad activa primen sobre los intereses de bloques beligerantes, promoviendo el desarme y la convivencia pacífica entre los pueblos.</p>
+                `,
+                icon: "fa-globe"
+            },
+            {
+                id: "4989",
+                num: 4989,
+                date: "09/10/2026",
+                category: "Defensa",
+                title: "#4989 DEFENSA - Ministerio de Defensa vs. Ministerio de Guerra",
+                excerpt: "Diferenciación conceptual fundamental: la defensa busca disuadir y proteger; la guerra destruye y empobrece.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4989 (09 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Es crucial defender la denominación e intención del 'Ministerio de Defensa' frente a visiones belicistas de 'Ministerio de Guerra'.</p>
+                    <p class="mb-3">El enfoque debe ser la disuasión constructiva, el socorro humanitario ante catástrofes naturales y la salvaguarda de las fronteras pacíficas, alejándonos de intervenciones bélicas en el exterior.</p>
+                `,
+                icon: "fa-shield"
+            },
+            {
+                id: "4985",
+                num: 4985,
+                date: "05/10/2026",
+                category: "Movilidad",
+                title: "#4985 NANO - Vehículos de velocidad reducida (VRE)",
+                excerpt: "Diseño y concepto de microvehículos urbanos NANO para una movilidad segura, económica y adaptada a la tercera edad.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4985 (05 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Los vehículos de velocidad reducida (VRE) del tipo NANO constituyen la solución perfecta para trayectos breves urbanos y rurales.</p>
+                    <p class="mb-3">Tienen consumo energético insignificante, ocupan mínimo espacio, son fáciles de maniobrar y erradican prácticamente el riesgo de accidentes graves o mortales en las calles.</p>
+                `,
+                icon: "fa-bolt-auto"
+            },
+            {
+                id: "4984",
+                num: 4984,
+                date: "04/10/2026",
+                category: "Sociedad y Democracia",
+                title: "#4984 DÍA A DÍA - La vida es velocidad, pero no desenfreno",
+                excerpt: "Reflexión filosófica sobre el ritmo de vida acelerado contemporáneo y la necesidad de serenidad interior.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4984 (04 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">Vivimos en una sociedad dominada por las prisas inútiles y el estrés. Si bien la existencia exige dinamismo, debemos distinguir entre velocidad consciente y desenfreno ciego.</p>
+                    <p class="mb-3">Cultivar la paciencia, el disfrute de la familia y el sosiego mental resulta vital para la salud física y espiritual del ser humano.</p>
+                `,
+                icon: "fa-hourglass-half"
+            },
+            {
+                id: "4983",
+                num: 4983,
+                date: "03/10/2026",
+                category: "Salud e Higiene",
+                title: "#4983 RTVE / SUBTÍTULOS - Inclusión e información diaria para la sordera",
+                excerpt: "Petición a la televisión pública para garantizar subtitulado obligatorio y de máxima calidad en toda la programación.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4983 (03 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">La televisión pública (RTVE) debe ejercer un liderazgo ejemplar en accesibilidad audiovisual. Cientos de miles de personas con sordera parcial o total quedan marginadas de la actualidad por falta de subtítulos precisos.</p>
+                    <p class="mb-3">Reclamamos la obligatoriedad de subtítulos bien sincronizados en directo para todos los informativos, debates y eventos culturales.</p>
+                `,
+                icon: "fa-closed-captioning"
+            },
+            {
+                id: "4982",
+                num: 4982,
+                date: "02/10/2026",
+                category: "Salud e Higiene",
+                title: "#4982 SUBTÍTULOS - El don de la tecnología accesible",
+                excerpt: "Aprovechar las herramientas tecnológicas para garantizar la inclusión completa de las personas con deficiencia auditiva.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4982 (02 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">La tecnología moderna posee el maravilloso potencial de romper barreras de aislamiento. Los subtítulos digitales en pantallas públicas, trámites administrativos y medios digitales son un instrumento de dignidad.</p>
+                    <p class="mb-3">Permiten que las personas con problemas de oído mantengan su participación activa en la cultura y la vida pública sin discriminación.</p>
+                `,
+                icon: "fa-ear-listen"
+            },
+            {
+                id: "4981",
+                num: 4981,
+                date: "01/10/2026",
+                category: "Salud e Higiene",
+                title: "#4981 OÍDO - Tratamiento e higiene auditiva",
+                excerpt: "Consejos prácticos de prevención, cuidado continuo y atención médica especializada para preservar la audición.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4981 (01 de Octubre de 2026)</strong></p>
+                    <p class="mb-3">La salud auditiva es habitualmente la gran olvidada en los controles sanitarios periódicos de la población de mediana edad.</p>
+                    <p class="mb-3">Es indispensable fomentar la higiene preventiva, evitar la exposición a ruidos estruendosos e implantar revisiones audiológicas periódicas gratuitas en el sistema público de salud.</p>
+                `,
+                icon: "fa-stethoscope"
+            },
+            {
+                id: "4980",
+                num: 4980,
+                date: "30/09/2026",
+                category: "Movilidad",
+                title: "#4980 MOVILIDAD - Memoria 2012 y reconocimientos",
+                excerpt: "Revisión histórica de las propuestas presentadas a instituciones públicas en materia de transporte limpio y sostenible.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4980 (30 de Septiembre de 2026)</strong></p>
+                    <p class="mb-3">Hacemos memoria de las iniciativas entregadas desde 2012 a organismos públicos e industrias sobre el transporte ecológico inteligente.</p>
+                    <p class="mb-3">Reconocemos el esfuerzo de todos los inventores e investigadores que dedican su vida a perfeccionar baterías y motores limpios para el bienestar común.</p>
+                `,
+                icon: "fa-clock-rotate-left"
+            },
+            {
+                id: "4978",
+                num: 4978,
+                date: "29/09/2026",
+                category: "Salud e Higiene",
+                title: "#4978 OÍDO - Evolución de la vista y el oído",
+                excerpt: "Análisis del deterioro sensorial natural con los años y soluciones de adaptación en entornos urbanos e higiénicos.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4978 (29 de Septiembre de 2026)</strong></p>
+                    <p class="mb-3">Con el paso de los años, los sentidos de la vista y el oído sufren desgaste natural. La sociedad debe adaptar sus señalizaciones, sonoridades e iluminación para facilitar la vida cotidiana de los ancianos.</p>
+                    <p class="mb-3">La accesibilidad sensorial no es un favor, sino un requisito esencial de la arquitectura urbana y social compasiva.</p>
+                `,
+                icon: "fa-eye"
+            },
+            {
+                id: "4977",
+                num: 4977,
+                date: "28/09/2026",
+                category: "Vivienda",
+                title: "#4977 VIVIENDA - Derecho constitucional a un hogar",
+                excerpt: "Exégesis del artículo constitucional sobre la vivienda digna y el mandato de las administraciones públicas.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4977 (28 de Septiembre de 2026)</strong></p>
+                    <p class="mb-3">El derecho a disfrutar de una vivienda digna y adecuada no es un adorno lírico en los textos constitucionales, sino una exigencia legal y humana de obligado cumplimiento.</p>
+                    <p class="mb-3">Las administraciones públicas deben regular activamente el suelo y frenar la burbuja especulativa para poner los hogares al servicio del pueblo.</p>
+                `,
+                icon: "fa-scale-balanced"
+            },
+            {
+                id: "4976",
+                num: 4976,
+                date: "27/09/2026",
+                category: "Defensa",
+                title: "#4976 FRONTERA - Ceuta, Melilla y Gibraltar",
+                excerpt: "Reflexión sobre las fronteras de soberanía, la convivencia pacífica interregional y la seguridad de los ciudadanos.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4976 (27 de Septiembre de 2026)</strong></p>
+                    <p class="mb-3">Las zonas fronterizas singulares como Ceuta, Melilla y el entorno geopolítico de Gibraltar requieren políticas especiales de desarrollo económico local, respeto a las diversas culturas y firmeza en la paz social.</p>
+                    <p class="mb-3">Fomentar la cooperación transfronteriza respetuosa es la clave para la prosperidad compartida de sus habitantes.</p>
+                `,
+                icon: "fa-map-location-dot"
+            },
+            {
+                id: "4975",
+                num: 4975,
+                date: "26/09/2026",
+                category: "Movilidad",
+                title: "#4975 DGT - Seguridad en vehículos eléctricos",
+                excerpt: "Recomendaciones de normativa de tráfico para la circulación segura de vehículos eléctricos urbanos e hiperligeros.",
+                content: `
+                    <p class="mb-3"><strong>Publicación Nº 4975 (26 de Septiembre de 2026)</strong></p>
+                    <p class="mb-3">Instamos a la Dirección General de Tráfico (DGT) a actualizar sus reglamentos adaptándose a la proliferación de la electromovilidad ligera.</p>
+                    <p class="mb-3">Es necesario clarificar vías de circulación, promover límites de velocidad moderados en áreas residenciales y establecer estándares claros de homologación de baterías seguras.</p>
+                `,
+                icon: "fa-traffic-light"
+            }
+        ];
+
+        // RENDERIZADO DE PUBLICACIONES EN LA CUADRÍCULA
+        let currentCategory = 'all';
+
+        function renderPosts(data = postsData) {
+            const grid = document.getElementById('postsGrid');
+            grid.innerHTML = '';
+
+            if(data.length === 0) {
+                grid.innerHTML = `
+                    <div class="col-span-full text-center py-12 bg-white dark:bg-slate-800 rounded-3xl border border-dashed border-slate-300 dark:border-slate-700 p-8">
+                        <i class="fa-solid fa-folder-open text-4xl text-slate-400 mb-3"></i>
+                        <p class="text-slate-600 dark:text-slate-300 font-bold text-base">No se encontraron artículos con esos términos.</p>
+                        <p class="text-xs text-slate-400 mt-1">Prueba con otra palabra clave como "Vivienda", "Oído", "Coche" o "Defensa".</p>
+                    </div>
+                `;
+                return;
+            }
+
+            data.forEach(post => {
+                const card = document.createElement('div');
+                card.className = "bg-white dark:bg-slate-800 rounded-3xl p-6 shadow-md hover:shadow-xl border border-slate-200/80 dark:border-slate-700 transition flex flex-col justify-between group";
+                card.innerHTML = `
+                    <div>
+                        <div class="flex items-center justify-between mb-4">
+                            <span class="text-xs font-bold px-3 py-1 rounded-full bg-sky-100 text-sky-800 dark:bg-sky-900/60 dark:text-sky-300 flex items-center gap-1.5">
+                                <i class="fa-solid ${post.icon}"></i> ${post.category}
+                            </span>
+                            <span class="text-xs text-slate-400 font-semibold">${post.date}</span>
+                        </div>
+                        <h4 class="text-base sm:text-lg font-bold text-slate-900 dark:text-white mb-2 group-hover:text-sky-600 dark:group-hover:text-sky-400 transition leading-snug">
+                            ${post.title}
+                        </h4>
+                        <p class="text-slate-600 dark:text-slate-300 text-xs sm:text-sm line-clamp-3 leading-relaxed mb-4">
+                            ${post.excerpt}
+                        </p>
+                    </div>
+                    <div class="pt-4 border-t border-slate-100 dark:border-slate-700/50 flex items-center justify-between">
+                        <button onclick="openModal('${post.id}')" class="text-xs font-bold text-sky-600 dark:text-sky-400 hover:text-sky-800 dark:hover:text-sky-200 flex items-center gap-1">
+                            Leer Completo <i class="fa-solid fa-arrow-right"></i>
+                        </button>
+                        <button onclick="speakText('${post.title}. ${post.excerpt}')" class="text-slate-400 hover:text-amber-500 transition p-1.5 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-700" title="Escuchar artículo en voz alta">
+                            <i class="fa-solid fa-volume-high"></i>
+                        </button>
+                    </div>
+                `;
+                grid.appendChild(card);
+            });
+        }
+
+        // FILTROS Y BÚSQUEDA
+        function setCategoryFilter(cat) {
+            currentCategory = cat;
+            
+            document.querySelectorAll('.cat-filter').forEach(btn => {
+                btn.classList.remove('bg-sky-600', 'text-white');
+                btn.classList.add('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+            });
+            event.target.classList.remove('bg-slate-200', 'dark:bg-slate-800', 'text-slate-700', 'dark:text-slate-300');
+            event.target.classList.add('bg-sky-600', 'text-white');
+
+            filterPosts();
+        }
+
+        function filterPosts() {
+            const query = document.getElementById('searchInput').value.toLowerCase().trim();
+            const filtered = postsData.filter(post => {
+                const matchesCat = (currentCategory === 'all' || post.category === currentCategory);
+                const matchesQuery = post.title.toLowerCase().includes(query) || 
+                                     post.excerpt.toLowerCase().includes(query) ||
+                                     post.category.toLowerCase().includes(query) ||
+                                     post.num.toString().includes(query);
+                return matchesCat && matchesQuery;
+            });
+            renderPosts(filtered);
+        }
+
+        // MODAL DE LECTURA DETALLADA
+        function openModal(postId) {
+            const post = postsData.find(p => p.id === postId);
+            if(!post) return;
+
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="flex items-center gap-2 text-xs font-bold text-sky-600 dark:text-sky-400 mb-2">
+                    <span class="bg-sky-100 dark:bg-sky-950 px-2.5 py-1 rounded-md"><i class="fa-solid ${post.icon}"></i> ${post.category}</span>
+                    <span>• ${post.date}</span>
+                </div>
+                <h3 class="text-xl sm:text-2xl font-bold text-slate-900 dark:text-white mb-4 leading-tight">
+                    ${post.title}
+                </h3>
+                <div id="modalBodyText" class="prose dark:prose-invert text-slate-700 dark:text-slate-300 text-sm sm:text-base leading-relaxed mb-6">
+                    ${post.content}
+                </div>
+                <div class="p-4 bg-amber-50 dark:bg-amber-950/30 border border-amber-200 dark:border-amber-800/50 rounded-2xl mb-6 text-xs text-amber-900 dark:text-amber-300 font-medium italic">
+                    "AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN" — Miguel Miranda Vila
+                </div>
+                <div class="flex justify-between items-center pt-4 border-t border-slate-200 dark:border-slate-800">
+                    <button onclick="speakText(document.getElementById('modalContent').innerText)" class="bg-amber-500 hover:bg-amber-600 text-slate-950 px-4 py-2.5 rounded-xl text-xs font-bold flex items-center gap-2 shadow transition">
+                        <i class="fa-solid fa-volume-high"></i> Escuchar Lectura de Voz
+                    </button>
+                    <button onclick="closeModal()" class="bg-slate-200 dark:bg-slate-800 hover:bg-slate-300 text-slate-800 dark:text-white px-5 py-2.5 rounded-xl text-xs font-bold transition">
+                        Cerrar
+                    </button>
+                </div>
+            `;
+            document.getElementById('postModal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('postModal').classList.add('hidden');
+            window.speechSynthesis?.cancel();
+        }
+
+        // LECTURA EN VOZ ALTA (TEXT-TO-SPEECH)
+        function speakText(text) {
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+                const cleanText = text.replace(/<[^>]*>?/gm, '');
+                const utterance = new SpeechSynthesisUtterance(cleanText);
+                utterance.lang = 'es-ES';
+                utterance.rate = 0.9; // Pausado accesible para personas mayores
+                window.speechSynthesis.speak(utterance);
+            } else {
+                alert('Tu navegador no soporta la función de lectura de voz.');
+            }
+        }
+
+        // AGENTE IA - INTEGRACIÓN CON OPENROUTER (MODELO GRATUITO)
+        async function handleChatSubmit(e) {
+            e.preventDefault();
+            const inputEl = document.getElementById('userInput');
+            const userMsg = inputEl.value.trim();
+            if(!userMsg) return;
+
+            appendChatMessage('user', userMsg);
+            inputEl.value = '';
+
+            const loadingId = appendLoadingMessage();
+
+            try {
+                const responseText = await callOpenRouterAPI(userMsg);
+                removeMessage(loadingId);
+                appendChatMessage('ai', responseText);
+            } catch (err) {
+                console.error(err);
+                removeMessage(loadingId);
+                appendChatMessage('ai', 'Disculpa, ha habido una interrupción momentánea. No obstante, recuerda siempre la máxima de nuestro consejo: *"AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN"*. ¿Deseas volver a intentar la consulta?');
+            }
+        }
+
+        function sendQuickPrompt(promptText) {
+            document.getElementById('userInput').value = promptText;
+            document.getElementById('chatForm').dispatchEvent(new Event('submit'));
+        }
+
+        // AGENTE IA - INTEGRACIÓN CON OPENROUTER (MODELOS GRATUITOS CON RESPALDO)
+        const OPENROUTER_API_KEY = ""; // NUNCA commitear la key: se inyecta en build/deploy o se usa netlify/functions/openrouter.js (env OPENROUTER_API_KEY)
+        const OPENROUTER_MODELS = [
+            "google/gemma-4-31b-it:free",
+            "nvidia/nemotron-3.5-lightning:free",
+            "minimax/minimax-m3.1-flash:free"
+        ];
+
+        async function callOpenRouterAPI(prompt) {
+            const systemPrompt = `
+                Eres "El Mediano Anciano", el Agente de Inteligencia Artificial oficial de la plataforma "CONSEJO MEDIANOS ANCIANOS", representando fielmente el pensamiento de Miguel Miranda Vila (migueldavinci@hotmail.es / miguelusdavinchius).
+
+                Posees conocimiento pleno sobre las 32 publicaciones del archivo:
+                - Movilidad: Vehículos eléctricos de 'Usar y Dejar' (#4998), Coche Eléctrico desde 2012 (#4997, #4980), Microvehículos NANO/VRE de velocidad reducida (#4985), Caja Negra obligatoria (#4998), Normativa DGT (#4975), Taxis sin taxímetro con tarifa fija y vehículos sin conductor (#5007), Licencia <A> para BMR (#5009).
+                - Vivienda: La vivienda es un derecho constitucional, no un negocio especulativo (#4991, #4977).
+                - Salud e Higiene Auditiva: Subtítulos obligatorios universales en RTVE y televisión (#4983, #4982), Cuidado e higiene del oído (#4981), Evolución natural de vista/oído (#4978).
+                - Sociedad, Paz y Política: La vocación con sacrificio (#4994), Las pensiones públicas como derecho ganado (#4995), El voto responsable como sal de la democracia (#4993), La vida con serenidad (#4984), Antidisturbios y policía preventiva (#4996), Economía y contradicciones políticas (#5008), Política como medio de cohesión (#5006).
+                - Defensa y Geopolítica: Ministerio de Defensa vs Guerra (#4989), Conflicto en Ucrania y neutralidad (#4990), Desfiles (#4992), Ceuta, Melilla y Gibraltar (#4976).
+
+                Responde con sabiduría, amabilidad, estilo claro y pausado, orientado a personas de mediana y avanzada edad.
+                Cierra tus respuestas largas recordando o inspirándote en el lema: "AMAR, ALEGRÍA, PAZ, BIEN Y PERDÓN".
+            `;
+
+            const makePayload = (model) => ({
+                model: model,
+                messages: [
+                    { role: 'system', content: systemPrompt },
+                    { role: 'user', content: prompt }
+                ]
+            });
+
+            let lastError = null;
+            for (const model of OPENROUTER_MODELS) {
+                try {
+                    const response = await fetch('https://openrouter.ai/api/v1/chat/completions', {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'Authorization': `Bearer ${OPENROUTER_API_KEY}`
+                        },
+                        body: JSON.stringify(makePayload(model))
+                    });
+
+                    if (!response.ok) {
+                        const errDetail = await response.text().catch(() => '');
+                        console.warn(`Modelo ${model} no disponible:`, response.status, errDetail);
+                        lastError = new Error(`Error en API OpenRouter (${response.status})`);
+                        continue;
+                    }
+
+                    const data = await response.json();
+                    return data.choices?.[0]?.message?.content || "No se pudo obtener una respuesta en este instante.";
+                } catch (err) {
+                    console.warn(`Fallo con modelo ${model}:`, err);
+                    lastError = err;
+                }
+            }
+            throw lastError || new Error('Error en conexión API OpenRouter');
+        }
+
+        function appendChatMessage(role, text) {
+            const container = document.getElementById('chatMessages');
+            const msgDiv = document.createElement('div');
+
+            if(role === 'user') {
+                msgDiv.className = 'flex items-start gap-3 justify-end';
+                msgDiv.innerHTML = `
+                    <div class="bg-sky-600 text-white rounded-2xl rounded-tr-none p-4 max-w-[85%] shadow-sm text-sm">
+                        <p class="font-semibold text-sky-100 mb-1 text-xs">Tú:</p>
+                        <p class="leading-relaxed">${escapeHtml(text)}</p>
+                    </div>
+                    <div class="w-8 h-8 rounded-full bg-slate-700 text-white flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                `;
+            } else {
+                msgDiv.className = 'flex items-start gap-3';
+                msgDiv.innerHTML = `
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-tl-none p-4 max-w-[85%] shadow-sm text-sm">
+                        <p class="font-semibold text-sky-700 dark:text-sky-400 mb-1 text-xs">El Mediano Anciano:</p>
+                        <div class="leading-relaxed whitespace-pre-line text-slate-800 dark:text-slate-200">${formatMarkdown(text)}</div>
+                    </div>
+                `;
+            }
+
+            container.appendChild(msgDiv);
+            container.scrollTop = container.scrollHeight;
+        }
+
+        function appendLoadingMessage() {
+            const container = document.getElementById('chatMessages');
+            const id = 'loading-' + Date.now();
+            const msgDiv = document.createElement('div');
+            msgDiv.id = id;
+            msgDiv.className = 'flex items-start gap-3';
+            msgDiv.innerHTML = `
+                <div class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs flex-shrink-0">
+                    <i class="fa-solid fa-robot"></i>
+                </div>
+                <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-tl-none p-4 shadow-sm text-sm flex items-center gap-2">
+                    <span class="text-xs text-slate-500">Consultando archivo del Consejo</span>
+                    <i class="fa-solid fa-circle-notch animate-spin text-sky-600"></i>
+                </div>
+            `;
+            container.appendChild(msgDiv);
+            container.scrollTop = container.scrollHeight;
+            return id;
+        }
+
+        function removeMessage(id) {
+            const el = document.getElementById(id);
+            if(el) el.remove();
+        }
+
+        function resetChat() {
+            const container = document.getElementById('chatMessages');
+            container.innerHTML = `
+                <div class="flex items-start gap-3">
+                    <div class="w-8 h-8 rounded-full bg-amber-500 text-white flex items-center justify-center text-xs flex-shrink-0">
+                        <i class="fa-solid fa-robot"></i>
+                    </div>
+                    <div class="bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-2xl rounded-tl-none p-4 max-w-[85%] shadow-sm text-sm">
+                        <p class="font-semibold text-sky-700 dark:text-sky-400 mb-1 text-xs">El Mediano Anciano:</p>
+                        <p class="leading-relaxed">Conversación reiniciada. ¿Qué tema del archivo te gustaría consultar ahora?</p>
+                    </div>
+                </div>
+            `;
+        }
+
+        // ENVÍO DE CORREO (MAILTO)
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            const name = document.getElementById('contactName').value;
+            const email = document.getElementById('contactEmail').value;
+            const subject = document.getElementById('contactSubject').value;
+            const message = document.getElementById('contactMessage').value;
+
+            const mailtoBody = `Estimado Miguel Miranda Vila,\n\nMi nombre es ${name} (${email}).\n\nCategoría de la carta: ${subject}\n\nMensaje:\n${message}\n\nUn cordial saludo,\n${name}`;
+            const mailtoUrl = `mailto:migueldavinci@hotmail.es?subject=${encodeURIComponent('CONSEJO MEDIANOS - ' + subject)}&body=${encodeURIComponent(mailtoBody)}`;
+            
+            window.location.href = mailtoUrl;
+            alert('Se ha preparado tu cliente de correo para enviar el mensaje a migueldavinci@hotmail.es');
+        }
+
+        // AJUSTES DE ACCESIBILIDAD
+        function changeFontSize(size) {
+            const body = document.body;
+            body.classList.remove('text-size-large', 'text-size-xlarge');
+            if(size === 'large') body.classList.add('text-size-large');
+            if(size === 'xlarge') body.classList.add('text-size-xlarge');
+        }
+
+        function toggleDarkMode() {
+            document.documentElement.classList.toggle('dark');
+            const icon = document.querySelector('#themeToggleBtn i');
+            if(document.documentElement.classList.contains('dark')) {
+                icon.className = 'fa-solid fa-sun text-amber-400 text-sm';
+            } else {
+                icon.className = 'fa-solid fa-moon text-sm';
+            }
+        }
+
+        function escapeHtml(text) {
+            return text.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+        }
+
+        function formatMarkdown(text) {
+            return text
+                .replace(/\*\*(.*?)\*\*/g, '<strong>$1</strong>')
+                .replace(/\*(.*?)\*/g, '<em>$1</em>');
+        }
+
+        // CARGA INICIAL
+        window.onload = function() {
+            renderPosts();
+        }
+    </script>
+</body>
+</html>
